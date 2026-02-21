@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글 수정</title>
+</head>
+<body>
+    <h2>글 수정</h2>
+    <div th:if="${errorMsg}" th:text="${errorMsg}" style="color:red"></div>
+    <form th:action="@{/boards/update}" method="post">
+        <input type="hidden" name="id" th:value="${board.id}">
+        writer: <input type="text" name="boardWriter" th:value="${board.boardWriter}"><br>
+        pass: <input type="password" name="boardPass" th:value="${board.boardPass}"><br>
+        title: <input type="text" name="boardTitle" th:value="${board.boardTitle}"><br>
+        contents: <textarea name="boardContents" rows="5" cols="40"
+                            th:text="${board.boardContents}"></textarea><br>
+        <input type="submit" value="저장">
+        <input type="reset" value="취소">
+    </form>
+</body>
+</html>

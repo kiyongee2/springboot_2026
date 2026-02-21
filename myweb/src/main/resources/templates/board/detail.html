@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글 상세보기</title>
+</head>
+<body>
+<h2>글 상세보기</h2>
+    title: <input type="text" th:value="${board.boardTitle}"><br>
+    contents: <textarea rows="5" cols="40"
+                    th:text="${board.boardContents}"></textarea><br>
+    writer: <input type="text" th:value="${board.boardWriter}"><br>
+    hits: <input type="text" th:value="${board.boardHits}"><br>
+    regDate: <input type="text" th:value="${board.createdAt}"><br>
+    <div>
+        <a th:href="@{/boards}">목록</a>&nbsp;
+        <a th:href="@{|/boards/update/${board.id}|}">수정</a>&nbsp;
+        <a th:href="@{|/boards/delete/${board.id}|}"
+            onclick="return confirm('정말 삭제하겠습니까?')">삭제</a>
+    </div>
+</body>
+</html>
