@@ -40,4 +40,11 @@ public class BoardEntity extends BaseTimeEntity{
         boardEntity.boardHits = 0;
         return boardEntity;
     }
+
+    //글 수정
+    public void update(BoardDTO boardDTO) {
+        //제목, 내용 수정
+        this.boardTitle = boardDTO.getBoardTitle();
+        this.boardContents = boardDTO.getBoardContents();
+    }
 }

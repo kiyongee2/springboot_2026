@@ -35,7 +35,7 @@
             <tr th:each="board: ${boardList}">
                 <td th:text="${board.id}"></td>
                 <td>
-                    <a href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a>
+                    <a th:href="@{|/boards/${board.id}|}" th:text="${board.boardTitle}"></a>
                 </td>
                 <td th:text="${board.boardWriter}"></td>
                 <td th:text="${board.boardCreatedAt}"></td>
@@ -48,7 +48,7 @@
 
 <script>
     const saveBoard = () => {
-        location.href = "/board/save";
+        location.href = "/boards/save";
     }
 </script>
 </html>

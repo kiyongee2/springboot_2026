@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <style>
+        fieldset{
+            width: 380px;
+        }
+        ul{
+            list-style: none;
+            padding-left: 10px;
+        }
+        ul li{
+            margin: 10px;
+        }
+        .button{margin: 10px;}
+        textarea{resize: none;}
+        input[type="text"]{width: 300px;}
+    </style>
+</head>
+<body>
+    <h2>글수정</h2>
+    <div th:if="${errorMessage}" style="color:red" th:text="${errorMessage}"></div>
+    <form th:action="@{/boards/update}" method="post">
+        <input type="hidden" name="id" th:value="${board.id}">
+        <fieldset>
+            <ul>
+                <li>
+                    <input type="text" name="boardTitle"
+                           th:value="${board.boardTitle}">
+                </li>
+                <li>
+                    <input type="password" name="updatePass" placeholder="비밀번호 입력">
+                </li>
+                <li>
+                    <textarea name="boardContents" rows="8" cols="40"
+                        th:text="${board.boardContents}"></textarea>
+                </li>
+                <li>
+                    <input type="text" th:value=" '글쓴이: ' + ${board.boardWriter} +
+                             '(작성일: ' + ${board.boardCreatedAt} + ')'" readonly>
+                </li>
+                <li>
+                    <input type="text" th:value=" '조회수: ' + ${board.boardHits}" readonly>
+                </li>
+                <li>
+                    <input type="submit" value="저장">
+                    <input type="reset" value="취소">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+
+<script th:if="${errorMessage}">
+    alert("[[${errorMessage}]]")
+</script>
+</body>
+</html>

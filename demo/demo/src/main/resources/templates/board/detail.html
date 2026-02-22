@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글 상세보기</title>
+    <style>
+        fieldset{
+            width: 400px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li{
+            margin: 10px;
+        }
+        .button{margin: 10px;}
+    </style>
+</head>
+<body>
+    <h2>글 상세</h2>
+    <fieldset>
+        <ul>
+            <li th:text="'ID: ' + ${board.id}"></li>
+            <li th:text="'제목: ' + ${board.boardTitle}"></li>
+            <li th:text="'내용: ' + ${board.boardContents}"></li>
+            <li th:text="'작성자: ' + ${board.boardWriter}"></li>
+            <li th:text="'조회수: ' + ${board.boardHits}"></li>
+            <li th:text="'작성일: ' + ${board.boardCreatedAt}"></li>
+        </ul>
+    </fieldset>
+    <div class="button">
+        <a th:href="@{/boards/}"><button>목록</button></a>
+        <a th:href="@{|/boards/update/${board.id}|}"><button>수정</button></a>
+        <a th:href="@{|/boards/delete/${board.id}|}"
+           onclick="return confirm('정말로 삭제하시겠습니까?')" ><button>삭제</button></a>
+    </div>
+</body>
+</html>
