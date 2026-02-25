@@ -30,10 +30,10 @@ public class BoardController {
     public String save(BoardDTO boardDTO){
         System.out.println("boardDTO = " + boardDTO);
         boardService.save(boardDTO);
-        return "redirect:/boards/";
+        return "redirect:/boards";
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String findAll(Model model){
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
@@ -52,7 +52,7 @@ public class BoardController {
     @GetMapping("/delete/{id}")
     public String deleteById(@PathVariable Long id){
         boardService.deleteById(id);
-        return "redirect:/boards/";
+        return "redirect:/boards";
     }
 
     //글 수정 페이지
