@@ -46,7 +46,9 @@ class TestControllerTest {
     public void getAllMembers() throws Exception {
         //given
         final String url = "/test";
-        Member savedMember = memberRepository.save(new Member(1L, "고담덕"));
+        //AllArgsConstructor 이용
+        Member member1 = new Member(1L, "고담덕");
+        Member savedMember = memberRepository.save(member1);
 
         //when
         final ResultActions result = mockMvc.perform(get(url)
